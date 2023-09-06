@@ -1,9 +1,18 @@
 // app/components/ProductList.tsx
-
 import React, { useEffect, useState } from 'react';
 
+interface Product {
+    id: number;
+    name: string;
+    category: {
+        name: string;
+    };
+    description: string;
+    price: number;
+}
+
 function ProductList() {
-    const [products, setProducts] = useState([]);
+    const [products, setProducts] = useState<Product[]>([]);
 
     useEffect(() => {
         async function fetchProducts() {
@@ -40,4 +49,3 @@ function ProductList() {
 }
 
 export default ProductList;
-
