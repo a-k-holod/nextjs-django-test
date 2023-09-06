@@ -1,22 +1,19 @@
 // app/components/CategoryList.tsx
 'use client';
-
 import React, { useEffect, useState } from 'react';
 
 interface Category {
     id: number;
     name: string;
 }
+
 function CategoryList() {
     const [categories, setCategories] = useState<Category[]>([]);
-
-    // const [categories, setCategories] = useState([]);
 
     useEffect(() => {
         async function fetchCategories() {
             try {
-                const response = await fetch<Category[]>('https://django-rest-starter-production-0e39.up.railway.app/api/categories/');
-
+                const response = await fetch('https://django-rest-starter-production-0e39.up.railway.app/api/categories/');
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
